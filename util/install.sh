@@ -217,8 +217,7 @@ function ovs {
     echo "Installing Open vSwitch..."
 
     # Required for module build/dkms install
-    $install $KERNEL_HEADERS
-
+    #$install $KERNEL_HEADERS
     ovspresent=0
 
     # First see if we have packages
@@ -238,7 +237,6 @@ function ovs {
         done
         ovspresent=1
     fi
-
     # Otherwise try distribution's OVS packages
     if [ "$DIST" = "Ubuntu" ] && [ `expr $RELEASE '>=' 11.10` = 1 ]; then
         if ! dpkg --get-selections | grep openvswitch-datapath; then
@@ -385,11 +383,11 @@ function oftest {
     $install tcpdump python-scapy
 
     # Install oftest:
-    cd ~/
-    git clone git://github.com/floodlight/oftest
-    cd oftest
-    cd tools/munger
-    sudo make install
+    #cd ~/
+    #git clone git://github.com/floodlight/oftest
+    #cd oftest
+    #cd tools/munger
+    #sudo make install
 }
 
 # Install cbench
@@ -398,7 +396,7 @@ function cbench {
     
     $install libsnmp-dev libpcap-dev libconfig-dev
     cd ~/
-    git clone git://openflow.org/oflops.git
+    git clone git://gitosis.stanford.edu/oflops.git
     cd oflops
     sh boot.sh || true # possible error in autoreconf, so run twice
     sh boot.sh
