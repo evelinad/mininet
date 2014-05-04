@@ -229,7 +229,7 @@ int establish_connection()
 	} else {
 		if (verb_level == 3)
 			fprintf(stdout,
-				"[INFO] Successfully established connection to remote server: %s, port %d",
+				"[INFO] Successfully established connection to remote server: %s, port %d\n",
 				server_ip, server_port);
 	}
 	int optval;
@@ -243,26 +243,22 @@ int establish_connection()
 		return -1;
 	} 
 	if(send_buffer_size > 0)
+	{
 	if (setsockopt
 	    (sockfd, SOL_SOCKET, SO_SNDBUF, &send_buffer_size, sizeof(send_buffer_size))
 	    != 0) {
 		fprintf(stderr,
 			"[ERROR] setsockopt: error setting SO_SNDBUF option\n");
 		return -1;
-	} 
-	unsigned int cucu;
-	unsigned long cucu2;
-	if(getsockopt
-	    (sockfd, SOL_SOCKET, SO_SNDBUF, &cucu2, &cucu)!=0)
-	    {
-	    	printf("e naspaaa");
-		}
-		printf("\n%lu\n",cucu2);
+	
+	}
+	}
+
 	if (verb_level >= 1) {
 		char * temp = calloc(50, sizeof(char));
 		sprintf(temp,"%lu",send_buffer_size);	
 		fprintf(stdout,
-			"TCP_NODELAY = %d\nserver ip = %s\nserver port = %u\nsend buffer size = %s\nrate = %u\nrequest size = %lu\niterations = %u\nduration = %lu\nverbosity level = %d\n",
+			"tcp nodelay = %d\nserver ip = %s\nserver port = %u\nsend buffer size = %s\nrate = %u\nrequest size = %lu\niterations = %u\nduration = %lu\nverbosity level = %d\n",
 			tcp_nodelay, server_ip, server_port, (send_buffer_size == 0)?"default":temp,
 			packet_rate, req_size, iterations, duration_sec,
 			verb_level);

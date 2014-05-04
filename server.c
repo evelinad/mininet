@@ -93,7 +93,7 @@ void sanity_checks(int argc, char *argv[])
 				scale = K;
 				optarg[strlen(optarg) - 1] = '\0';				
 			}
-			optarg[strlen(optarg) - 1] = '\0';
+
 			if (atol(optarg) > 0) {
 				recv_buffer_size = atol(optarg) * scale;
 				scale = 1;
@@ -112,7 +112,7 @@ void sanity_checks(int argc, char *argv[])
 				scale = K;
 				optarg[strlen(optarg) - 1] = '\0';				
 			}
-			optarg[strlen(optarg) - 1] = '\0';
+
 			if (atol(optarg) > 0) {
 				req_size = atol(optarg) * scale;
 				scale = 1;
@@ -151,9 +151,6 @@ int establish_connection()
 
 	int conn_socket;
 	struct sockaddr_in servaddr;
-	char *endptr;
-	int n;
-
 	if ((list_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr,
 			"[ERROR] socket: Failed to create listening socket.\n");
@@ -229,12 +226,12 @@ int establish_connection()
 				"[ERROR] setsockopt: Failed to set SO_RCVBUF socket option\n");
 			exit(EXIT_FAILURE);
 		}
-
+		
 	if (verb_level >= 1) {
 		char * temp = calloc(50, sizeof(char));
 		sprintf(temp,"%lu",recv_buffer_size);
 		fprintf(stdout,
-			"TCP_NODELAY = %d\nserver port = %u\nrecv buffer size = %s\nverbosity level = %d\n",
+			"\ntcp nodelay = %d\nserver port = %u\nrecv buffer size = %s\nverbosity level = %d\n",
 			tcp_nodelay, server_port, (recv_buffer_size == 0)?"default":temp, verb_level);
 		free(temp);
 	}
@@ -285,4 +282,5 @@ int main(int argc, char *argv[])
 	int conn_socket = establish_connection();
 	recv_traffic(conn_socket);
 	remove_connection();
+	return 0;
 }
