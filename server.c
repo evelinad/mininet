@@ -11,10 +11,10 @@
 #include <netdb.h>
 #include <linux/tcp.h>
 #include <getopt.h>
+#include<string.h>
 
 /*  Global constants  */
 
-#define TIME_PORT          (12865)
 #define MAX_LINE           (1000)
 #define LISTENQ        (1024)
 
@@ -22,35 +22,35 @@
 #define M 1048576
 
 static char usage[] =
-    "usage: %s [--nodelay] [--help] [--serverip=<ip>] [--serverport=<port>] [--recvbuffer=<sizer>] [--verbose=<level>]\n";
+    "usage: %s [--nodelay] [--help] [--serverport=<port>] [--recvbuffer=<sizer>] [--reqsize <size[K|M]>]  [--verbose=<level>]\n";
 
 static char help[] = "\nTCP Sockets Client Test Options:\n\
 --nodelay                  Disable Nagle's Algorithm\n\
 --help                     Display this message and exit.\n\
---serverip <ip>            Server ip to connect to. Default 127.0.0.1\n\
 --serverport <port>        Server port to connect to. Default 2000\n\
 --recv_buffer <size[K|M]>  Socket receive buffer size. Unix system default\n\
---verbosity [0 1 2 3]      Verbosity level\n";
+--reqsize <size[K|M]>      Size of a request message. Default 100\n\
+--verbose [0 1 2 3]      Verbosity level\n";
 
 static struct option client_options[] = {
 	{"nodelay", no_argument, 0, 'n'},
 	{"help", no_argument, 0, 'h'},
-	{"serverip", required_argument, 0, 'i'},
 	{"serverport", required_argument, 0, 'p'},
 	{"recvbuffer", required_argument, 0, 'b'},
-	{"verbosity", required_argument, 0, 'v'},
+	{"reqsize", required_argument, 0, 'q'},
+	{"verbose", required_argument, 0, 'v'},
 	{0, 0, 0, 0}
 };
 
 int tcp_nodelay = 0;
-char *server_ip = NULL;
-unsigned int server_port = 12865;
-unsigned long recv_buffer_size = 100;
+unsigned int server_port = 2003;
+unsigned long recv_buffer_size = 0;
+unsigned long req_size = 100;
+char *req_buffer = NULL;
 int verb_level = 0;
-char *recv_buffer = NULL;
 unsigned long total_bytes_recv = 0;
 unsigned long total_recv_calls = 0;
-int list_s;			/*  listening socket          */
+int list_socket;
 
 void print_usage(char *exec_name)
 {
@@ -68,16 +68,11 @@ void sanity_checks(int argc, char *argv[])
 	int opt = 0;
 	int long_index = 0;
 	int scale = 1;
-	server_ip = calloc(40, sizeof(char));
-	strcpy(server_ip, "127.0.0.1");
-	while ((opt = getopt_long(argc, argv, "nhi:p:r:b:q:t:e:",
+	while ((opt = getopt_long(argc, argv, "nhp:b:q:v:",
 				  client_options, &long_index)) != -1) {
 		switch (opt) {
 		case 'n':
 			tcp_nodelay = 1;
-			break;
-		case 'i':
-			strcpy(server_ip, optarg);
 			break;
 		case 'p':
 			if (atoi(optarg) > 0) {
@@ -91,11 +86,12 @@ void sanity_checks(int argc, char *argv[])
 			break;
 
 		case 'b':
-
-			if (optarg[strlen(optarg) - 1] == 'M') {
+			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
-			} else if (optarg[strlen(optarg) - 1] == 'K') {
+				optarg[strlen(optarg) - 1] = '\0';
+			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
+				optarg[strlen(optarg) - 1] = '\0';				
 			}
 			optarg[strlen(optarg) - 1] = '\0';
 			if (atol(optarg) > 0) {
@@ -108,7 +104,24 @@ void sanity_checks(int argc, char *argv[])
 				exit(EXIT_FAILURE);
 			}
 			break;
-
+		case 'q':
+			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
+				scale = M;
+				optarg[strlen(optarg) - 1] = '\0';
+			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
+				scale = K;
+				optarg[strlen(optarg) - 1] = '\0';				
+			}
+			optarg[strlen(optarg) - 1] = '\0';
+			if (atol(optarg) > 0) {
+				req_size = atol(optarg) * scale;
+				scale = 1;
+			} else {
+				fprintf(stderr,
+					"[ERROR] Invalid request buffer size\n");
+				print_usage(argv[0]);
+				exit(EXIT_FAILURE);
+			}
 		case 'h':
 			print_help(argv[0]);
 			exit(EXIT_SUCCESS);
@@ -129,24 +142,19 @@ void sanity_checks(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 	}
-	recv_buffer = calloc(recv_buffer_size, sizeof(char));
-	printf("%s\n", server_ip);
+	req_buffer = calloc(req_size, sizeof(char));
 
 }
 
 int establish_connection()
 {
 
-	int conn_s;		/*  connection socket         */
-	struct sockaddr_in servaddr;	/*  socket address structure  */
-	char *endptr;		/*  for strtol()              */
+	int conn_socket;
+	struct sockaddr_in servaddr;
+	char *endptr;
 	int n;
-	/*  Get port number from the command line, and
-	   set to default port if no arguments were supplied  */
 
-	/*  Create the listening socket  */
-
-	if ((list_s = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+	if ((list_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr,
 			"[ERROR] socket: Failed to create listening socket.\n");
 		exit(EXIT_FAILURE);
@@ -157,39 +165,35 @@ int establish_connection()
 
 	}
 
-	/*  Set all bytes in socket address structure to
-	   zero, and fill in the relevant data members   */
-
 	memset(&servaddr, 0, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	servaddr.sin_port = server_port;
+	servaddr.sin_port = htons(server_port);
 
 	int optval = 1;
 	if (setsockopt
-	    (list_s, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) != 0) {
+	    (list_socket, SOL_SOCKET, SO_REUSEADDR, &optval,
+	     sizeof(optval)) != 0) {
 		fprintf(stderr,
 			"[ERROR] setsockopt: Failed to set SO_REUSEADDR socket option\n");
 		exit(EXIT_FAILURE);
 	}
 
-	/*  Bind our socket addresss to the 
-	   listening socket, and call listen()  */
-
-	if (bind(list_s, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
+	if (bind(list_socket, (struct sockaddr *)&servaddr, sizeof(servaddr)) <
+	    0) {
 		fprintf(stdout,
-			"[ERROR] bind: Failed to bind to endpoint ip = %s port %u\n",
-			server_ip, server_port);
+			"[ERROR] bind: Failed to bind to endpoint to port %u\n",
+			server_port);
 		exit(EXIT_FAILURE);
 	} else {
 		if (verb_level == 3)
 			fprintf(stdout,
-				"[INFO] Successfully binded endpoint ip = %s port %u\n",
-				server_ip, server_port);
+				"[INFO] Successfully binded endpoint to port %u\n",
+				server_port);
 
 	}
 
-	if (listen(list_s, LISTENQ) < 0) {
+	if (listen(list_socket, LISTENQ) < 0) {
 		fprintf(stdout, "[ERROR] listen: Failed to listen on socket\n");
 		exit(EXIT_FAILURE);
 	} else {
@@ -199,11 +203,7 @@ int establish_connection()
 
 	}
 
-	/*  Enter an infinite loop to respond
-	   to client requests and echo input  */
-
-	/*  Wait for a connection, then accept() it  */
-	if ((conn_s = accept(list_s, NULL, NULL)) < 0) {
+	if ((conn_socket = accept(list_socket, NULL, NULL)) < 0) {
 		fprintf(stdout,
 			"[ERROR] accept: Failed to accept new connection\n");
 		exit(EXIT_FAILURE);
@@ -214,53 +214,55 @@ int establish_connection()
 
 	}
 	struct protoent *tcp_proto = getprotobyname("tcp");
-	printf("proto no %d\n", tcp_proto->p_proto);
 	if (setsockopt
-	    (conn_s, tcp_proto->p_proto, TCP_NODELAY, &tcp_nodelay,
+	    (conn_socket, tcp_proto->p_proto, TCP_NODELAY, &tcp_nodelay,
 	     sizeof(tcp_nodelay)) != 0) {
 		fprintf(stdout,
 			"[ERROR] setsockopt: Failed to set TCP_NODELAY socket option\n");
 		exit(EXIT_FAILURE);
 	}
-	optval = 800 * 1024;
-	if (setsockopt
-	    (conn_s, SOL_SOCKET, SO_RCVBUF, &recv_buffer_size,
-	     sizeof(recv_buffer_size))!= 0) {
-		fprintf(stdout,
-			"[ERROR] setsockopt: Failed to set SO_RCVBUF socket option\n");
-		exit(EXIT_FAILURE);
-	}
+	if (recv_buffer_size > 0)
+		if (setsockopt
+		    (conn_socket, SOL_SOCKET, SO_RCVBUF, &recv_buffer_size,
+		     sizeof(recv_buffer_size)) != 0) {
+			fprintf(stdout,
+				"[ERROR] setsockopt: Failed to set SO_RCVBUF socket option\n");
+			exit(EXIT_FAILURE);
+		}
 
 	if (verb_level >= 1) {
+		char * temp = calloc(50, sizeof(char));
+		sprintf(temp,"%lu",recv_buffer_size);
 		fprintf(stdout,
-			"TCP_NODELAY = %d\nserver ip = %s\nserver port = %u\nrecv buffer size = %lu\nverbosity level = %d\n",
-			tcp_nodelay, server_ip, server_port, recv_buffer_size,
-			verb_level);
-
+			"TCP_NODELAY = %d\nserver port = %u\nrecv buffer size = %s\nverbosity level = %d\n",
+			tcp_nodelay, server_port, (recv_buffer_size == 0)?"default":temp, verb_level);
+		free(temp);
 	}
 
-	return conn_s;
+	return conn_socket;
 
 }
 
-void recv_traffic(int conn_s)
+void recv_traffic(int conn_socket)
 {
 
 	fprintf(stdout, "Started receving traffic\n");
 	int n = 0;
-	while ((n += read(conn_s, recv_buffer, sizeof(recv_buffer))) > 0) {
+	while ((n = read(conn_socket, req_buffer, req_size)) > 0) {
 
-		printf("tot primesc %d\n", n);
-		memset(recv_buffer, 0, sizeof(recv_buffer));
+		memset(req_buffer, 0, sizeof(req_buffer));
+		total_recv_calls++;
+		total_bytes_recv += n;
+		if (verb_level == 2)
+			fprintf(stdout,
+				"[INFO] bytes recv = %d\ntotal bytes recv = %lu\ntotal recv calls = %lu\n",
+				n, total_bytes_recv, total_recv_calls);
 	}
 	if (n < 0) {
 		printf("\n Read error \n");
 	}
-	//Writeline(conn_s, buffer, strlen(buffer));
 
-	/*  Close the connected socket  */
-
-	if (close(conn_s) < 0) {
+	if (close(conn_socket) < 0) {
 		fprintf(stderr, "ECHOSERV: Error calling close()\n");
 		exit(EXIT_FAILURE);
 	} else {
@@ -270,7 +272,7 @@ void recv_traffic(int conn_s)
 
 void remove_connection()
 {
-	if (close(list_s) < 0) {
+	if (close(list_socket) < 0) {
 		fprintf(stderr, "ECHOSERV: Error calling close()\n");
 		exit(EXIT_FAILURE);
 	}
@@ -280,7 +282,7 @@ int main(int argc, char *argv[])
 {
 
 	sanity_checks(argc, argv);
-	int conn_s = establish_connection();
-	recv_traffic(conn_s);
+	int conn_socket = establish_connection();
+	recv_traffic(conn_socket);
 	remove_connection();
 }

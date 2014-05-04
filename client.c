@@ -12,6 +12,7 @@
 #include <linux/tcp.h>
 #include <time.h>
 #include <getopt.h>
+#include <unistd.h>
 #define SEC_IN_NANOS 1000000000
 #define K 1024
 #define M 1048576
@@ -29,7 +30,7 @@ static char help[] = "\nTCP Sockets Client Test Options:\n\
 --reqsize <size[K|M]>      Size of a request message. Default 100\n\
 --iterations <iterations>  Number of iterations for a test\n\
 --time <seconds>           Test duration in seconds\n\
---verbosity [0 1 2 3]      Verbosity level\n";
+--verbose [0 1 2 3]      Verbosity level\n";
 
 static struct option client_options[] = {
 	{"nodelay", no_argument, 0, 'n'},
@@ -39,21 +40,21 @@ static struct option client_options[] = {
 	{"rate", required_argument, 0, 'r'},
 	{"sendbuffer", required_argument, 0, 'b'},
 	{"reqsize", required_argument, 0, 'q'},
-	{"ierations", required_argument, 0, 'e'},
+	{"iterations", required_argument, 0, 'e'},
 	{"time", required_argument, 0, 't'},
-	{"verbosity", required_argument, 0, 'v'},
+	{"verbose", required_argument, 0, 'v'},
 	{0, 0, 0, 0}
 };
 
 int tcp_nodelay = 0;
 char *server_ip = NULL;
-unsigned int server_port = 12865;
-unsigned int packet_rate = 1;
+unsigned int server_port = 2003;
+unsigned int packet_rate = 100;
 unsigned long send_buffer_size = 0;
 char *req_buffer = NULL;
 unsigned long req_size = 100;
 unsigned long duration_sec = 0;
-unsigned int iterations = 1;
+unsigned int iterations = 100;
 int verb_level = 0;
 
 unsigned long total_bytes_sent = 0;
@@ -98,12 +99,14 @@ void sanity_checks(int argc, char *argv[])
 			break;
 		case 'r':
 
-			if (optarg[strlen(optarg) - 1] == 'M') {
+			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
-			} else if (optarg[strlen(optarg) - 1] == 'K') {
+				optarg[strlen(optarg) - 1] = '\0';
+			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
+				optarg[strlen(optarg) - 1] = '\0';				
 			}
-			optarg[strlen(optarg) - 1] = '\0';
+
 			if (atoi(optarg) > 0) {
 				packet_rate = atoi(optarg) * scale;
 				scale = 1;
@@ -116,12 +119,14 @@ void sanity_checks(int argc, char *argv[])
 			break;
 		case 'b':
 
-			if (optarg[strlen(optarg) - 1] == 'M') {
+			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
-			} else if (optarg[strlen(optarg) - 1] == 'K') {
+				optarg[strlen(optarg) - 1] = '\0';
+			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
+				optarg[strlen(optarg) - 1] = '\0';				
 			}
-			optarg[strlen(optarg) - 1] = '\0';
+
 			if (atol(optarg) > 0) {
 				send_buffer_size = atol(optarg) * scale;
 				scale = 1;
@@ -133,13 +138,14 @@ void sanity_checks(int argc, char *argv[])
 			}
 			break;
 		case 'q':
-
-			if (optarg[strlen(optarg) - 1] == 'M') {
+			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
-			} else if (optarg[strlen(optarg) - 1] == 'K') {
+				optarg[strlen(optarg) - 1] = '\0';
+			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
+				optarg[strlen(optarg) - 1] = '\0';				
 			}
-			optarg[strlen(optarg) - 1] = '\0';
+
 			if (atoi(optarg) > 0) {
 				req_size = atoi(optarg) * scale;
 				scale = 1;
@@ -192,8 +198,8 @@ void sanity_checks(int argc, char *argv[])
 	}
 
 	req_buffer = calloc(req_size, sizeof(char));
-	strcpy(req_buffer, "ceva\r\n");
-	printf("%s\n", server_ip);
+	req_buffer[req_size-3] = '\r';
+	req_buffer[req_size-2] = '\n';
 
 }
 
@@ -236,20 +242,31 @@ int establish_connection()
 		     "[ERROR] setsockopt: error setting TCP_NODELAY option\n");
 		return -1;
 	} 
-	if(send_buffer_size >=0)
+	if(send_buffer_size > 0)
 	if (setsockopt
-	    (sockfd, SOL_SOCKET, SO_SNDBUF, &req_size, sizeof(send_buffer_size))
+	    (sockfd, SOL_SOCKET, SO_SNDBUF, &send_buffer_size, sizeof(send_buffer_size))
 	    != 0) {
 		fprintf(stderr,
 			"[ERROR] setsockopt: error setting SO_SNDBUF option\n");
 		return -1;
 	} 
+	unsigned int cucu;
+	unsigned long cucu2;
+	if(getsockopt
+	    (sockfd, SOL_SOCKET, SO_SNDBUF, &cucu2, &cucu)!=0)
+	    {
+	    	printf("e naspaaa");
+		}
+		printf("\n%lu\n",cucu2);
 	if (verb_level >= 1) {
+		char * temp = calloc(50, sizeof(char));
+		sprintf(temp,"%lu",send_buffer_size);	
 		fprintf(stdout,
-			"TCP_NODELAY = %d\nserver ip = %s\nserver port = %u\nsend buffer size = %lu\nrate = %u\nrequest size = %lu\niterations = %u\n duration = %lu\nverbosity level = %d\n",
-			tcp_nodelay, server_ip, server_port, send_buffer_size,
+			"TCP_NODELAY = %d\nserver ip = %s\nserver port = %u\nsend buffer size = %s\nrate = %u\nrequest size = %lu\niterations = %u\nduration = %lu\nverbosity level = %d\n",
+			tcp_nodelay, server_ip, server_port, (send_buffer_size == 0)?"default":temp,
 			packet_rate, req_size, iterations, duration_sec,
 			verb_level);
+			free(temp);
 
 	}
 	return sockfd;
@@ -267,9 +284,10 @@ void do_test(int sockfd)
 	send_calls = 0;
 	clock_gettime(CLOCK_REALTIME, &tsp);
 	time_in_nanos1 = SEC_IN_NANOS * tsp.tv_sec + tsp.tv_nsec;
-	for (r = 0; r < packet_rate; r++) {
+	
+	for (r = 0; r < packet_rate; r++) 
+	{
 		bytes_sent += write(sockfd, req_buffer, req_size);
-		printf("gatu matii");
 		clock_gettime(CLOCK_REALTIME, &tsp);
 		time_in_nanos2 = SEC_IN_NANOS * tsp.tv_sec + tsp.tv_nsec;
 		time_diff_in_nanos = time_in_nanos2 - time_in_nanos1;
@@ -279,11 +297,16 @@ void do_test(int sockfd)
 					"[WARNING] Didn't reach required packet rate\n");
 			r = packet_rate;
 
-		} else {
-			sleep(time_diff_in_nanos);
-		}
+		} 
 		send_calls++;
 	}
+	
+	if (time_diff_in_nanos < SEC_IN_NANOS)
+	{
+		tsp.tv_nsec = SEC_IN_NANOS - time_diff_in_nanos;
+		tsp.tv_sec = 0; 
+		nanosleep(&tsp, NULL);
+	}		
 	total_bytes_sent += bytes_sent;
 	total_send_calls += send_calls;
 	if (verb_level == 2)
@@ -298,6 +321,7 @@ void do_test_iterations(int sockfd)
 {
 
 	int i;
+	
 	for (i = 0; i < iterations; i++)
 	{
 		if(verb_level >= 2)
@@ -311,7 +335,6 @@ void do_test_iterations(int sockfd)
 void do_test_duration(int sockfd)
 {
 
-	int i;
 	struct timespec tsp;	
 	unsigned long time_in_nanos1, time_in_nanos2, time_diff_in_nanos;
 	clock_gettime(CLOCK_REALTIME, &tsp);
@@ -335,11 +358,19 @@ int main(int argc, char *argv[])
 	int sockfd;
 	sanity_checks(argc, argv);
 	sockfd = establish_connection();
+	if(sockfd == -1 )
+	{
+		free(req_buffer);
+		free(server_ip);
+		exit(EXIT_FAILURE);		
+	}
+		
 	fprintf(stdout, "Start test ... \n");		
 	if (duration_sec == 0)
 		do_test_iterations(sockfd);
 	else
 		do_test_duration(sockfd);
+	close(sockfd);
 	fprintf(stdout, "End test ... \n");			
 
 	return 0;
