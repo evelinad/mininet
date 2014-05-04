@@ -1,0 +1,967 @@
+./server --verbose=3 --nodelay --recvbuffer=800K --reqsize=100 &
+./client --verbose=3 --iterations=10 --rate=100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:             8563 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:             1435 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./server --verbose=3 --nodelay --recvbuffer=800K --reqsize=100 &
+./client --verbose=3 --iterations=10 --rate=100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:             9394 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:              604 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            36661 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+
+./client --verbose=3 --iterations=10 --rate=400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+
+./client --verbose=3 --iterations=10 --rate=500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+
+./server --verbose=3 --nodelay --recvbuffer=800K --reqsize=100 &
+./client --verbose=3 --iterations=10 --rate=100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:             5523 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:             4475 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            14755 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:             5240 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            26540 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:             3455 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            23763 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            16230 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            30395 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            19602 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            38436 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            21554 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            47333 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            22656 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            52943 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            27043 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            61366 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            28621 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            71193 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            28790 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:            89472 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            20507 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           103912 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            16066 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           112185 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            17790 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           110585 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            29391 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           129004 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            20967 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           135432 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            24539 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           145941 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            24027 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           145810 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            34160 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=1900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           152238 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            37726 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           158152 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            41815 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           196709 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            13251 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           185830 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            34129 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           197148 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            32813 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           203467 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            36488 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           222856 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            27097 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           211277 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            48676 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           239993 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            29955 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.2 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           231844 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            48107 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=2900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           258099 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            31849 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           275230 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            24712 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           257378 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            52566 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           311689 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:             8246 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           289978 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            39961 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           295237 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            44701 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           308764 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            41168 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           326627 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            33304 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           329749 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            40183 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           351496 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            28427 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=3900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           348130 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            41794 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           355705 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            44224 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           355377 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            54548 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           381298 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            38623 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           380482 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            49440 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           397501 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            42449 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.1 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           380035 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            69892 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           394736 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            65177 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.2 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           426913 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            43007 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           429108 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            50805 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=4900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           466347 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            23556 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           451997 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            47911 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           461159 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            48747 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.9 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           478622 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            41281 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 1.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           475273 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            54635 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           479406 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            60489 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           487520 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            62374 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg (last):          0.1 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           489059 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            72694 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.1 ms        RTT avg:                 0.1 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           478809 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            95216 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           504890 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            78019 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=5900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           503771 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            87547 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg (last):          0.0 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           524738 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            84595 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           528598 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            95996 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           541298 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            85585 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.8 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           548133 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            92449 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           568595 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            78565 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           567249 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            87201 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           571656 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            96236 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           588462 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            92273 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           612028 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            80679 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=6900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           601808 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            91208 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           605356 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           118094 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           632664 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            91244 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.7 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           641715 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            92441 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           629198 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           111658 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           647537 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           102176 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           659657 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           107198 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           657895 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           117393 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           672535 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           113599 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           691671 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:            99036 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=7900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           699915 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           103357 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           705786 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           111625 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8100 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg (last):          0.1 ms        RTT avg (last):          0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           698222 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           124499 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8200 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           704272 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           135428 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8300 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           732283 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           123985 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8400 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           733566 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           123427 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8500 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           739559 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           134447 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8600 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.6 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           745994 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           131259 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8700 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.5 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           776395 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           114876 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8800 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           769299 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           124549 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=8900 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.4 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           777230 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           135217 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
+./client --verbose=3 --iterations=10 --rate=9000 --nodelay --sendbuffer=800K --serverip=10.0.1.2
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     RTT avg:                 0.3 ms        RTT avg:                 0.1 ms   
+     RTT avg:                 0.0 ms        RTT avg:                 0.0 ms   
+     throughput:           775898 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+     throughput:           139781 Bps       throughput:                0 Bps  
+     throughput:                0 Bps       throughput:                0 Bps  
+
