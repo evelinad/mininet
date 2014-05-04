@@ -227,7 +227,7 @@ int establish_connection()
 		fprintf(stderr, "[ERROR] connect: Failed to connect\n");
 		return -1;
 	} else {
-		if (verb_level == 3)
+		if (verb_level >= 3)
 			fprintf(stdout,
 				"[INFO] Successfully established connection to remote server: %s, port %d\n",
 				server_ip, server_port);
@@ -305,7 +305,7 @@ void do_test(int sockfd)
 	}		
 	total_bytes_sent += bytes_sent;
 	total_send_calls += send_calls;
-	if (verb_level == 2)
+	if (verb_level >= 2)
 		fprintf(stdout,
 			"[INFO] bytes sent = %lu\nsend calls = %lu\ntotal bytes sent = %lu\ntotal send calls = %lu\n",
 			bytes_sent, send_calls,

@@ -28,7 +28,7 @@ static char help[] = "\nTCP Sockets Client Test Options:\n\
 --nodelay                  Disable Nagle's Algorithm\n\
 --help                     Display this message and exit.\n\
 --serverport <port>        Server port to connect to. Default 2000\n\
---recv_buffer <size[K|M]>  Socket receive buffer size. Unix system default\n\
+--recvbuffer <size[K|M]>  Socket receive buffer size. Unix system default\n\
 --reqsize <size[K|M]>      Size of a request message. Default 100\n\
 --verbose [0 1 2 3]      Verbosity level\n";
 
@@ -122,6 +122,7 @@ void sanity_checks(int argc, char *argv[])
 				print_usage(argv[0]);
 				exit(EXIT_FAILURE);
 			}
+			break;
 		case 'h':
 			print_help(argv[0]);
 			exit(EXIT_SUCCESS);
