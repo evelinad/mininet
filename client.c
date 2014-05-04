@@ -274,7 +274,7 @@ void do_test(int sockfd)
 	int r;
 	unsigned long bytes_sent = 0;
 	unsigned long send_calls = 0;
-	unsigned long time_in_nanos1, time_in_nanos2, time_diff_in_nanos;
+	unsigned long time_in_nanos1, time_in_nanos2,  time_diff_in_nanos;
 	struct timespec tsp;
 	bytes_sent = 0;
 	send_calls = 0;

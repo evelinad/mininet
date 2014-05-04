@@ -86,12 +86,14 @@ void sanity_checks(int argc, char *argv[])
 			break;
 
 		case 'b':
-			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
+			if (optarg[strlen(optarg) - 1] == 'M'
+			    || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
 				optarg[strlen(optarg) - 1] = '\0';
-			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
+			} else if (optarg[strlen(optarg) - 1] == 'K'
+				   || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
-				optarg[strlen(optarg) - 1] = '\0';				
+				optarg[strlen(optarg) - 1] = '\0';
 			}
 
 			if (atol(optarg) > 0) {
@@ -105,12 +107,14 @@ void sanity_checks(int argc, char *argv[])
 			}
 			break;
 		case 'q':
-			if (optarg[strlen(optarg) - 1] == 'M' || optarg[strlen(optarg) - 1] == 'm') {
+			if (optarg[strlen(optarg) - 1] == 'M'
+			    || optarg[strlen(optarg) - 1] == 'm') {
 				scale = M;
 				optarg[strlen(optarg) - 1] = '\0';
-			} else if (optarg[strlen(optarg) - 1] == 'K' || optarg[strlen(optarg) - 1] == 'k') {
+			} else if (optarg[strlen(optarg) - 1] == 'K'
+				   || optarg[strlen(optarg) - 1] == 'k') {
 				scale = K;
-				optarg[strlen(optarg) - 1] = '\0';				
+				optarg[strlen(optarg) - 1] = '\0';
 			}
 
 			if (atol(optarg) > 0) {
@@ -227,13 +231,14 @@ int establish_connection()
 				"[ERROR] setsockopt: Failed to set SO_RCVBUF socket option\n");
 			exit(EXIT_FAILURE);
 		}
-		
+
 	if (verb_level >= 1) {
-		char * temp = calloc(50, sizeof(char));
-		sprintf(temp,"%lu",recv_buffer_size);
+		char *temp = calloc(50, sizeof(char));
+		sprintf(temp, "%lu", recv_buffer_size);
 		fprintf(stdout,
 			"\ntcp nodelay = %d\nserver port = %u\nrecv buffer size = %s\nverbosity level = %d\n",
-			tcp_nodelay, server_port, (recv_buffer_size == 0)?"default":temp, verb_level);
+			tcp_nodelay, server_port,
+			(recv_buffer_size == 0) ? "default" : temp, verb_level);
 		free(temp);
 	}
 
@@ -280,8 +285,11 @@ int main(int argc, char *argv[])
 {
 
 	sanity_checks(argc, argv);
-	int conn_socket = establish_connection();
-	recv_traffic(conn_socket);
-	remove_connection();
+	int conn_socket;
+	while (1) {
+		conn_socket = establish_connection();
+		recv_traffic(conn_socket);
+		remove_connection();
+	}
 	return 0;
 }
