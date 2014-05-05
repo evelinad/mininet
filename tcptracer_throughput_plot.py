@@ -11,7 +11,7 @@ while (True):
 		break
 	regx = re.compile('--rate[ ]*[=]?[ ]*[0-9]+')
 	regx2 = re.compile('--rate[ ]*[=]?[ ]*')
-	packet_rate = regx2.sub('',''.join(regx.findall(line)))
+	packet_rate = int(regx2.sub('',''.join(regx.findall(line))))
 	packet_rates.append(packet_rate)
 
 	line = f.readline()
