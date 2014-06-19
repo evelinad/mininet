@@ -9,9 +9,10 @@
 #include <time.h>
 #include <string.h>
 #include <netdb.h>
-#include <linux/tcp.h>
 #include <getopt.h>
 #include<string.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 
 /*  Global constants  */
 
@@ -50,7 +51,6 @@ char *req_buffer = NULL;
 int verb_level = 0;
 unsigned long total_bytes_recv = 0;
 unsigned long total_recv_calls = 0;
-int list_socket;
 
 void print_usage(char *exec_name)
 {
@@ -133,7 +133,7 @@ void sanity_checks(int argc, char *argv[])
 			break;
 
 		case 'v':
-			if (atoi(optarg) > 0) {
+			if (atoi(optarg) >= 0) {
 				verb_level = atoi(optarg);
 			} else {
 				fprintf(stderr,
@@ -151,10 +151,9 @@ void sanity_checks(int argc, char *argv[])
 
 }
 
-int establish_connection()
+int start_listening()
 {
-
-	int conn_socket;
+	int list_socket;
 	struct sockaddr_in servaddr;
 	if ((list_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		fprintf(stderr,
@@ -178,7 +177,7 @@ int establish_connection()
 	     sizeof(optval)) != 0) {
 		fprintf(stderr,
 			"[ERROR] setsockopt: Failed to set SO_REUSEADDR socket option\n");
-		exit(EXIT_FAILURE);
+		return -1;
 	}
 
 	if (bind(list_socket, (struct sockaddr *)&servaddr, sizeof(servaddr)) <
@@ -186,7 +185,7 @@ int establish_connection()
 		fprintf(stdout,
 			"[ERROR] bind: Failed to bind to endpoint to port %u\n",
 			server_port);
-		exit(EXIT_FAILURE);
+		return -1;
 	} else {
 		if (verb_level == 3)
 			fprintf(stdout,
@@ -197,18 +196,25 @@ int establish_connection()
 
 	if (listen(list_socket, LISTENQ) < 0) {
 		fprintf(stdout, "[ERROR] listen: Failed to listen on socket\n");
-		exit(EXIT_FAILURE);
+		return -1;
 	} else {
 		if (verb_level == 3)
 			fprintf(stdout,
 				"[INFO] Successfully started to listen for new connections\n");
 
 	}
+	return list_socket;
+}
+
+int establish_connection(int list_socket)
+{
+
+	int conn_socket;
 
 	if ((conn_socket = accept(list_socket, NULL, NULL)) < 0) {
 		fprintf(stdout,
 			"[ERROR] accept: Failed to accept new connection\n");
-		exit(EXIT_FAILURE);
+		return -1;
 	} else {
 		if (verb_level == 3)
 			fprintf(stdout,
@@ -221,7 +227,7 @@ int establish_connection()
 	     sizeof(tcp_nodelay)) != 0) {
 		fprintf(stdout,
 			"[ERROR] setsockopt: Failed to set TCP_NODELAY socket option\n");
-		exit(EXIT_FAILURE);
+		return -1;
 	}
 	if (recv_buffer_size > 0)
 		if (setsockopt
@@ -248,9 +254,13 @@ int establish_connection()
 
 void recv_traffic(int conn_socket)
 {
-
-	fprintf(stdout, "Started receving traffic\n");
+	
+	if(verb_level>=1)
+		fprintf(stdout, "[INFO] Started receving traffic\n");
 	int n = 0;
+	struct tcp_info tcpinfo;
+	socklen_t len = sizeof(tcpinfo);
+	int success;
 	while ((n = read(conn_socket, req_buffer, req_size)) > 0) {
 
 		memset(req_buffer, 0, sizeof(req_buffer));
@@ -260,23 +270,33 @@ void recv_traffic(int conn_socket)
 			fprintf(stdout,
 				"[INFO] bytes recv = %d\ntotal bytes recv = %lu\ntotal recv calls = %lu\n",
 				n, total_bytes_recv, total_recv_calls);
+		//usleep(70000);
 	}
+	success = getsockopt(conn_socket, SOL_TCP, TCP_INFO, &tcpinfo, &len);
+	if (success != -1) {
+		printf("RTT  %u %u\n", (tcpinfo.tcpi_rtt),
+		       tcpinfo.tcpi_rcv_rtt);
+	} else {
+		fprintf(stderr, "[ERROR] getsockopt: Failed to retrieve TCP_INFO socket option\n");
+	}
+
 	if (n < 0) {
-		printf("\n Read error \n");
+		fprintf(stderr, "[ERROR] Read error\n");
 	}
 
 	if (close(conn_socket) < 0) {
-		fprintf(stderr, "ECHOSERV: Error calling close()\n");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "[ERROR] close: Failed to close socket\n");
+
 	} else {
-		fprintf(stdout, "Finished receving traffic\n");
+		if (verb_level >= 1)
+		fprintf(stdout, "[INFO ] Finished receving traffic\n");
 	}
 }
 
-void remove_connection()
+void remove_connection(int list_socket)
 {
 	if (close(list_socket) < 0) {
-		fprintf(stderr, "ECHOSERV: Error calling close()\n");
+		fprintf(stderr, "[ERROR] close: Failed to close socket\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -286,10 +306,19 @@ int main(int argc, char *argv[])
 
 	sanity_checks(argc, argv);
 	int conn_socket;
+	int list_socket = start_listening();
+	if (list_socket == -1)
+		exit(EXIT_FAILURE);
 	while (1) {
-		conn_socket = establish_connection();
+		conn_socket = establish_connection(list_socket);
+		if (conn_socket == -1)
+		{
+			remove_connection(list_socket);
+			exit(EXIT_FAILURE);
+		}		
 		recv_traffic(conn_socket);
-		remove_connection();
+
 	}
+	remove_connection(list_socket);
 	return 0;
 }

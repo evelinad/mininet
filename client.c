@@ -9,10 +9,11 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <netdb.h>
-#include <linux/tcp.h>
 #include <time.h>
 #include <getopt.h>
 #include <unistd.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 #define SEC_IN_NANOS 1000000000
 #define K 1024
 #define M 1048576
@@ -182,7 +183,7 @@ void sanity_checks(int argc, char *argv[])
 			}
 			break;
 		case 'v':
-			if (atoi(optarg) > 0) {
+			if (atoi(optarg) >= 0) {
 				verb_level = atoi(optarg);
 			} else {
 				fprintf(stderr,
@@ -232,11 +233,10 @@ int establish_connection()
 				"[INFO] Successfully established connection to remote server: %s, port %d\n",
 				server_ip, server_port);
 	}
-	int optval;
-	optval = 1;
+
 	if (setsockopt
-	    (sockfd, tcp_proto->p_proto, TCP_NODELAY, &tcp_nodelay,
-	     sizeof(optval)) != 0) {
+	    (sockfd, IPPROTO_TCP, TCP_NODELAY, (char *)&tcp_nodelay,
+	     sizeof(tcp_nodelay)) != 0) {
 		fprintf
 		    (stderr,
 		     "[ERROR] setsockopt: error setting TCP_NODELAY option\n");
@@ -280,10 +280,12 @@ void do_test(int sockfd)
 	send_calls = 0;
 	clock_gettime(CLOCK_REALTIME, &tsp);
 	time_in_nanos1 = SEC_IN_NANOS * tsp.tv_sec + tsp.tv_nsec;
-	
+
 	for (r = 0; r < packet_rate; r++) 
 	{
 		bytes_sent += write(sockfd, req_buffer, req_size);
+
+		
 		clock_gettime(CLOCK_REALTIME, &tsp);
 		time_in_nanos2 = SEC_IN_NANOS * tsp.tv_sec + tsp.tv_nsec;
 		time_diff_in_nanos = time_in_nanos2 - time_in_nanos1;
